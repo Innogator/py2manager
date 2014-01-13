@@ -25,9 +25,13 @@ possible_languages = read_possible_languages(abspath('applications', app))
 #NOTE! app - is an application based router's parameter with name of an
 #            application. E.g.'welcome'
 
-routers = dict(
-        BASE = dict(default_application='py2manager'),
+routers = {
+    app: dict(
+        default_language = possible_languages['default'][0],
+        languages = [lang for lang in possible_languages
+                           if lang != 'default']
     )
+}
 
 #NOTE! To change language in your application using these rules add this line
 #in one of your models files:
